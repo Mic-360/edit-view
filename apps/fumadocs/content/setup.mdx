@@ -1,0 +1,85 @@
+---
+title: Setup Guide
+---
+
+## Clone & Install
+
+```bash
+bun create better-t-stack@latest edit-view \
+  --frontend tanstack-start \
+  --backend hono \
+  --runtime bun \
+  --api trpc \
+  --auth none \
+  --database sqlite \
+  --orm drizzle \
+  --db-setup none \
+  --package-manager bun \
+  --git \
+  --web-deploy none \
+  --server-deploy none \
+  --install \
+  --addons fumadocs turborepo \
+  --examples none
+```
+
+Then install dependencies inside the monorepo (if not already installed by the generator):
+
+```bash
+bun install
+```
+
+## Environment Variables
+
+Create a `.env` file in `apps/server`:
+
+```env
+GEMINI_API_KEY=your_api_key_here
+```
+
+And a `.env` in `apps/web` to point the web app to your server (adjust the port if needed):
+
+```env
+VITE_SERVER_URL=http://localhost:3000
+```
+
+## Frontend Implementation
+
+Key components in `apps/web/src/components`:
+
+- `ImageUploader.tsx` — single image upload with preview and removal
+- `PromptInput.tsx` — multiline text area with 500 char limit
+- `ResultDisplay.tsx` — shows AI result, download link, and text output
+
+TailwindCSS is already configured via the template. Global styles are in `apps/web/src/index.css`.
+
+## Backend Implementation
+
+API route: `POST /api/edit-image`
+
+- Accepts `multipart/form-data` with fields: `image` (file) and `prompt` (string)
+- Validates type/size and prompt length
+- Calls Gemini `gemini-2.5-flash-image-preview` using `@google/genai`
+- Streams image output, saves to `apps/server/public/edited/`, and returns the URL
+
+Implementation lives in `apps/server/src/index.ts`.
+
+## Running the App
+
+Run both apps via turborepo:
+
+```bash
+bun dev
+```
+
+Or individually:
+
+```bash
+cd apps/server; bun run dev
+cd apps/web; bun run dev
+```
+
+## Deploying
+
+- Local run: start the server and web app as above.
+- Cloud: deploy the server to a Bun‑compatible host; expose `/trpc` and `/api/edit-image` and serve `/edited/*` statically from `public/`. Point the web app’s `VITE_SERVER_URL` to the server URL.

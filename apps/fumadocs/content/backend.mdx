@@ -1,0 +1,43 @@
+---
+title: Backend Implementation
+---
+
+## Endpoint: POST /api/edit-image
+
+Accepts:
+
+- `image` — multipart/form-data file (.jpg/.jpeg/.png/.webp), max 5MB
+- `prompt` — string, max 500 characters
+
+Returns:
+
+```json
+{
+  "success": true,
+  "imageUrl": "http://localhost:3000/edited/xxx.png",
+  "text": "optional model text"
+}
+```
+
+## Gemini Integration
+
+Uses `@google/genai` and `mime`.
+
+```ts
+const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! });
+const model = 'gemini-2.5-flash-image-preview';
+const config = { responseModalities: ['IMAGE', 'TEXT'] };
+const contents = [
+  {
+    role: 'user',
+    parts: [{ text: prompt }, { inlineData: { data: base64, mimeType } }],
+  },
+];
+const stream = await ai.models.generateContentStream({
+  model,
+  config,
+  contents,
+});
+```
+
+For each streamed `inlineData`, the server writes a file under `public/edited/` and returns the public URL. CORS is enabled for local dev via `CORS_ORIGIN`.

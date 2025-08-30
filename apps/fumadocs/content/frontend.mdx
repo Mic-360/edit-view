@@ -1,0 +1,37 @@
+---
+title: Frontend Implementation
+---
+
+## File Structure (web)
+
+```
+apps/web/
+  src/
+    components/
+      ImageUploader.tsx
+      PromptInput.tsx
+      ResultDisplay.tsx
+    routes/
+      index.tsx
+```
+
+## Components
+
+- ImageUploader
+
+  - Single file input, accepts .jpg/.jpeg/.png/.webp
+  - 5MB limit, preview, remove
+  - Accessible labels and error messages
+
+- PromptInput
+
+  - Multiline textarea with 500 char limit
+  - Remaining counter, error state when exceeded
+
+- ResultDisplay
+  - Shows the generated image, download button, and any text output
+  - Loading and error messages
+
+## TailwindCSS
+
+Tailwind is configured by the template. Utility classes are used directly in components. Global styles live in `src/index.css`.

@@ -1,0 +1,39 @@
+{
+	"docs": [
+		{
+			"type": "page",
+			"name": "Introduction",
+			"href": "/index"
+		},
+		{
+			"type": "page",
+			"name": "Setup Guide",
+			"href": "/setup"
+		},
+		{
+			"type": "page",
+			"name": "Frontend Implementation",
+			"href": "/frontend"
+		},
+		{
+			"type": "page",
+			"name": "Backend Implementation",
+			"href": "/backend"
+		},
+		{
+			"type": "page",
+			"name": "Usage Guide",
+			"href": "/usage"
+		},
+		{
+			"type": "page",
+			"name": "Troubleshooting",
+			"href": "/troubleshooting"
+		},
+		{
+			"type": "page",
+			"name": "Tech Stack",
+			"href": "/tech-stack"
+		}
+	]
+}

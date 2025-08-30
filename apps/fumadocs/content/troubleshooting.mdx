@@ -1,0 +1,15 @@
+---
+title: Troubleshooting
+---
+
+## Common Issues
+
+- Missing API key: Ensure `GEMINI_API_KEY` is set in `apps/server/.env`.
+- Unsupported file type: Only JPG, PNG, and WEBP are accepted.
+- Image too large: Limit is 5MB.
+- Prompt too long: Max 500 characters.
+- CORS error: Set `CORS_ORIGIN` in `apps/server/.env` to the web app origin, e.g., `http://localhost:3001`.
+
+## Logs
+
+The server logs requests and errors. Check the terminal running `apps/server`.
