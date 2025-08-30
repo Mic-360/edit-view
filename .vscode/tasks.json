@@ -1,0 +1,23 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Install server deps",
+			"type": "shell",
+			"command": "bun install",
+			"args": []
+		},
+		{
+			"label": "Typecheck web and server",
+			"type": "shell",
+			"command": "bunx turbo check-types",
+			"args": []
+		},
+		{
+			"label": "Dev servers",
+			"type": "shell",
+			"command": "bun run dev",
+			"args": []
+		}
+	]
+}
