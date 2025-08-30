@@ -1,10 +1,10 @@
 {
 	"name": "edit-view",
+	"devDependencies": {
+		"turbo": "^2.5.6"
+	},
+	"packageManager": "bun@1.2.21",
 	"private": true,
-	"workspaces": [
-		"apps/*",
-		"packages/*"
-	],
 	"scripts": {
 		"dev": "turbo dev",
 		"build": "turbo build",
@@ -17,9 +17,8 @@
 		"db:generate": "turbo -F server db:generate",
 		"db:migrate": "turbo -F server db:migrate"
 	},
-	"dependencies": {},
-	"devDependencies": {
-		"turbo": "^2.5.6"
-	},
-	"packageManager": "bun@1.2.21"
+	"workspaces": [
+		"apps/*",
+		"packages/*"
+	]
 }
