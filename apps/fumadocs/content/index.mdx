@@ -1,7 +1,33 @@
 ---
+title: Introduction
+---
+
+# Image Editor Web App
+
+This project is a full‑stack image editing demo using:
+
+- TanStack Start + React for the frontend
+- Hono + tRPC + Bun for the backend
+- Google Gemini for AI image generation/editing
+- Fumadocs for documentation
+- Turborepo for monorepo tooling
+
+The app lets you upload one image, describe an edit prompt, and receive an AI‑generated edited result you can preview and download.
+
+## Features
+
+- Single image upload (.jpg, .jpeg, .png, .webp), 5MB limit
+- Prompt text area, 500 char limit
+- Submit button disabled until valid
+- Result preview + download
+- Accessible forms and labels
+
+## Continue to the Setup Guide to run locally.
+
 title: Hello World
 description: Your favourite docs framework.
 icon: Rocket
+
 ---
 
 Hey there! Fumadocs is a docs framework built for Next.js, but do you know it also works on Tanstack Start?
@@ -12,10 +38,13 @@ Hello World!
 
 <Cards>
   <Card
-    title="Learn more about Tanstack Start"
-    href="https://tanstack.com/start"
+    title='Learn more about Tanstack Start'
+    href='https://tanstack.com/start'
   />
-  <Card title="Learn more about Fumadocs" href="https://fumadocs.vercel.app" />
+  <Card
+    title='Learn more about Fumadocs'
+    href='https://fumadocs.vercel.app'
+  />
 </Cards>
 
 ### CodeBlock
